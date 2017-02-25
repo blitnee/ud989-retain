@@ -26,7 +26,7 @@ $(function(){
         },
 
         getNotes: function() {
-            return model.getAllNotes();
+            return model.getAllNotes().reverse();
         },
 
         init: function() {
@@ -50,10 +50,11 @@ $(function(){
         },
         render: function(){
             var htmlStr = '';
+            var date = new Date();
             octopus.getNotes().forEach(function(note){
-                htmlStr += '<li class="note">'+
-                        note.content +
-                    '</li>';
+                htmlStr += '<li class="note"><span class="note-date">'
+                        + date + '</span>'
+                        + note.content + '</li>';
             });
             this.noteList.html( htmlStr );
         }
